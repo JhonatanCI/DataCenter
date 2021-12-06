@@ -200,8 +200,11 @@ public class DataCenter {
 		String id = ""+row+column;
 		for (int i = 0;i<company.size() ;i++ ) {
 			for (int j = 0;j<400 ;j++ ) {
-				if (company.get(i).getidOfMiniroomRented(j).equals(id)){
-					out = i;
+				if (company.get(i).getidOfMiniroomRented(j)!= null){
+					if (company.get(i).getidOfMiniroomRented(j).equals(id)) {
+						out = i;
+					}
+					
 				}
 			}	
 		}
@@ -242,6 +245,25 @@ public class DataCenter {
 
 	/**
 	 *
+	 * Delete a company if no have rents
+	 */
+	public void deleteCompanyIfIsEmpty(){
+		boolean noDelete = false;
+		for (int i = 0;i<company.size() ;i++) {
+			for (int j = 0;j<400 ;j++ ){
+				if (company.get(i).getidOfMiniroomRented(j)!= null){
+					noDelete = true;
+				}
+			}
+			if (!noDelete) {
+				deleteCompany(i+1);
+			}
+			noDelete=false;
+		}
+	}
+
+	/**
+	 *
 	 * If you override the rent, this methot delete the id from the company that rent it
 	 * before
 	 * @param row, you know what is a... ok no. the row where is the miniroom
@@ -251,9 +273,13 @@ public class DataCenter {
 		int i = foundCompanyFromId(row, column);
 		String id = ""+row+column;
 		for (int j = 0;j<400 ;j++ ) {
+			if (company.get(i).getidOfMiniroomRented(j)!= null){
 				if (company.get(i).getidOfMiniroomRented(j).equals(id)){
 					company.get(i).setidOfMiniroomRented( j, null);
 				}
+
+			}
+				
 		}	
 		
 	}

@@ -184,12 +184,14 @@ public class Main {
 		int row = sc.nextInt();
 		System.out.println("Pls write the miniroom");
 		int column = sc.nextInt();
-		row-=1;
-		column-=1;
+		row--;
+		column--;
 		while (!dt.verifyId(row,column)) {
 			System.out.println("The id is incorrect");
 			row = sc.nextInt();
 			column = sc.nextInt();
+			row--;
+			column--;
 		}
 		if (!dt.isRented(row,column)) {
 			rent( row,  column, name);
@@ -304,16 +306,20 @@ public class Main {
 		int row = sc.nextInt();
 		System.out.println("Pls write the miniroom");
 		int column = sc.nextInt();
-		row-=1;
-		column-=1;
+		row--;
+		column--;
 		while (!dt.verifyId(row,column)) {
 			System.out.println("The id is incorrect");
 			row = sc.nextInt();
 			column = sc.nextInt();
+			row--;
+			column--;
 		}
 		if (dt.isRented(row,column)) {
 			System.out.println(dt.showCapacity(row, column));
 			dt.cancelRent( row,  column);
+			dt.clearIdCompany(row , column);
+			dt.deleteCompanyIfIsEmpty();
 		}else{
 			System.out.println("This miniroom is not rented, you want to exit? (y/n)\n");
 			String ans = sc.next();
