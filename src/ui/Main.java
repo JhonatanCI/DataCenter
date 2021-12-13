@@ -39,7 +39,8 @@ public class Main {
 
 	/**
 	 * "The main"
-	 * @param String
+	 * @param args,
+	 * @throws InterruptedException
 	 * Inicizialice the object for spinner who the great animation from start 7w7
 	 * Then Start the while for the menu
 	 */
@@ -89,7 +90,7 @@ public class Main {
 
 	/**
 	 * 
-	 * @param int, option
+	 * @param option, int 
 	 * read the answer and call a methot for the user
 	 */
 	public void switchAns(int option){
@@ -174,9 +175,9 @@ public class Main {
 			}
 		}else{
 			name = "ICESI";
+			sc.nextLine();
 			System.out.println("Write the id of the Proyect");
 			nit = sc.nextLine();
-			sc.nextLine();
 		}
 
 		System.out.println("Write the position of the miniroom");
@@ -215,7 +216,9 @@ public class Main {
 	}
 
 	/**
-	 * 
+	 * @param row, the row where is the miniroom
+	 * @param column, the column where is the miniroom
+	 * @param name, the name of the company
 	 * Ask all the information for the RACK and the servers, i use a new methot to get the
 	 * date, i show user if he will pay more for use less than 4 servers in his minirrom
 	 * and then call the methots who will save all the info of the rented minirrom
